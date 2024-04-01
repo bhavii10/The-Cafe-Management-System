@@ -1,0 +1,104 @@
+body {
+    background-color: #be9c79;
+    color: white;
+    margin: 0;
+    padding: 20px;
+    opacity: 0.9;
+    background-image: url(https://i.pinimg.com/564x/b8/69/fc/b869fc2b88988535b1fad65b4c2aae59.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: black;
+}
+
+.quantity-button {
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.quantity-button:hover {
+    background-color: #b35700;
+}
+
+/* Add styles for the total box */
+.total-box {
+    background-color: black;
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.total {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 0;
+}
+
+.contentbox {
+    height: 100px;
+    width: 100px;
+}
+
+.buttons {
+    margin-top: 20px;
+    text-align: center; /* Center the buttons */
+}
+
+.buttons button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-top: 100px;
+    transition: background-color 0.3s ease;
+    justify-content: space-between;
+    align-items: center; /* Add smooth transition for the background color */
+}
+
+.buttons button:hover {
+    background-color: #b35700;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 10px 0;
+    text-align: center;
+    border-top: 1px solid black;
+    font-style: italic;
+    color: white;
+    font-size: 20px;
+}

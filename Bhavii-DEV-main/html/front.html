@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Heaven &hearts;</title>
+
+    <link rel="stylesheet" href="../css/front.css">
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <a href="#" id="logo">&#x2615;</a>
+            <a href="#Home">Home</a>
+            <a href="#Contact">Contact</a>
+            <a href="orders.html">Orders</a>
+            <a href="#About Us">About Us</a>
+            <a href="login.html">Login</a>
+        </div>
+    </header>
+
+    <div id="Home">
+        <h1>Coffee Heaven </h1>
+        <p>What goes best with a cup of coffee? Another cup.</p>
+	    <br>
+		<br>
+		<h3>Popular Menu >></h3>
+		<br>
+		<section class="menu" id=""menu>
+            <div class="box-container">
+                <div class="coffee">
+                    <img src="https://i.pinimg.com/564x/df/0f/64/df0f6486225c04dae3707a1740483c5a.jpg" alt="">
+                    <h2>Cappuccino</h2>
+	    		    <p class="price">Rs 299</p>
+                    <button class="order-button">Order</button>
+                </div>
+
+                <div class="coffee">
+                    <img src="https://i.pinimg.com/564x/24/0f/5a/240f5a6d937fbc278643ed08441287dd.jpg" alt="">
+                    <h2>Frappuccino</h2>
+	    		    <p class="price">Rs 449</p>
+                    <button class="order-button">Order</button>
+                </div>
+
+                <div class="coffee">
+                    <img src="https://i.pinimg.com/736x/98/1c/0f/981c0f6b5256f215661ed4656e3e9557.jpg" alt="">
+                    <h2>Mocha Coffee</h2>
+	    		    <p class="price">Rs 379</p>
+                    <button class="order-button">Order</button>
+                </div>
+
+                <div class="coffee">
+                    <img src="https://i.pinimg.com/564x/c2/e4/e6/c2e4e62362c0307eeeadf317a1448882.jpg" alt="">
+                    <h2>Black Coffee</h2>
+	    		    <p class="price">Rs 299</p>
+                    <button class="order-button">Order</button>
+                </div>
+
+                <div class="coffee">
+                    <img src="https://i.pinimg.com/564x/55/f8/7b/55f87b082c2e6f655957e29725e8a0d8.jpg" alt="">
+                    <h2>Latte</h2>
+	    			<p class="price">Rs 429</p>
+                    <button class="order-button">Order</button>
+                </div> 
+
+                <div class="coffee">
+                    <img src="https://i.pinimg.com/564x/25/61/89/2561897a1114589b47c333b3fc9273e9.jpg" alt="">
+                    <h2>Espresso </h2>
+	    			<p class="price">Rs 249</p>
+                    <button class="order-button">Order</button>
+                </div>
+
+                <div class="coffee">
+                    <img src="https://i.pinimg.com/564x/cb/c0/bd/cbc0bd15711362131aa87bfdc9fa0b58.jpg" alt="">
+                    <h2>Iced Coffee</h2>
+	    			<p class="price">Rs 359</p>
+                    <button class="order-button">Order</button>	
+                </div>
+				
+				<div class="coffee">
+                    <img src="https://b.zmtcdn.com/data/dish_photos/39a/7a4b8ba3c3e9a396ae41aaa86ee8239a.jpg" alt="">
+                    <h2>Americano</h2>
+	    			<p class="price">Rs 269</p>
+                    <button class="order-button">Order</button>	
+                </div>
+				
+				<div class="coffee">
+                    <img src="https://b.zmtcdn.com/data/dish_photos/65d/0b4c56946b6b948b37a4f5d5db53365d.jpg" alt="">
+                    <h2>Cheese Chilly Garlic Toast</h2>
+	    			<p class="price">Rs 159</p>
+                    <button class="order-button">Order</button>	
+                </div>
+				
+            </div>
+        </section>
+        <div class="contentbox"></div>
+        <div class="contentbox"></div>
+    </div>
+    
+    <footer> 
+        Made with &hearts; by Bhavisha Ahuja,Bharat Choudhary,Balreet Singh <br>
+        &#169;Copyright @ 2023 
+    </footer>
+
+
+    <script>
+        // Function to handle the "Order" button click
+        function handleOrderClick(itemName, itemPrice) {
+            // Get the existing order data from local storage
+            var existingOrderData = localStorage.getItem('orderListData');
+            console.log('Existing Order Data:', existingOrderData);    
+            // Parse the existing order data or create an empty array if it doesn't exist
+            var orderList = existingOrderData ? JSON.parse(existingOrderData) : [];
+            console.log('Current Order List:', orderList);
+            // Check if the itemName already exists in the orderList
+            var existingItem = orderList.find(item => item.itemName === itemName);
+            if (existingItem) {
+                // If the item exists, increase its quantity
+                existingItem.quantity++;
+                console.log('Item Already Exist. Updated Quantity:', existingItem.quantity);
+            } else {
+                // If the item doesn't exist, add a new item
+                var newItemObject = {
+                    itemName: itemName,
+                    itemPrice: itemPrice,
+                    quantity: 1
+                };
+                orderList.push(newItemObject);
+                console.log('New Item Added:', newItemObject);
+            }
+            // Convert the updated order list to a string
+            var orderListString = JSON.stringify(orderList);
+            console.log('Updated Order List String:', orderListString);
+            // Store the updated string in local storage
+            localStorage.setItem('orderListData', orderListString);
+            // Redirect to the orders.html page
+            window.location.href = 'orders.html';
+        }
+
+        // Add event listeners to all "Order" buttons
+        const orderButtons = document.querySelectorAll('.order-button');
+        orderButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const itemName = this.parentNode.querySelector('h2').textContent;
+                const itemPrice = this.parentNode.querySelector('p').textContent;
+                handleOrderClick(itemName, itemPrice);
+            });
+        });
+    </script>
+
+</body>
+</html>

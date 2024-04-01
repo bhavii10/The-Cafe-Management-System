@@ -1,0 +1,32 @@
+body {
+    background-color: #be9c79;
+    color: white;
+    margin: 0;
+    padding: 20px;
+    opacity: 0.9;
+    background-image: url(https://i.pinimg.com/564x/0f/5b/f6/0f5bf6281061fafe291b3776263e78ac.jpg);
+    background-size:cover;
+    position: relative;
+}
+
+h2 {
+    background-color: black;
+    text-align: center;
+    border-radius: 5px;
+    color: whitesmoke;
+    padding: 30px 0;
+    font-family:'Courier New', Courier, monospace; /* Applying 'Pacifico' as a fallback cursive font */
+    border-style: solid white;
+    margin-top: 100px;
+    animation: fadeIn 1.5s ease-out; /* Apply the animation */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+

@@ -1,0 +1,142 @@
+*{
+    padding: 0;
+    margin:0;
+    color: white;
+}
+
+body {
+    background-color: #be9c79;
+    color: white;
+}
+
+#navbar{
+    height:50px;
+    background-color: black;
+    box-shadow: black;
+    border-radius: 5px;
+    display:block;
+    position:relative;
+}
+
+#navbar a:hover{
+    color:black;
+    background-color:white;
+    border-radius: 20px;
+    text-decoration: none;
+    padding: 3px 22px;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+a{
+    margin-right: 100px;
+    text-decoration: none;
+    font-size: 25px;
+}
+.contentbox{
+    height: 100px;
+    width: 100px;
+}
+
+footer {
+    background-color: black;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 0;
+}
+
+/* Home section */
+#Home {
+    padding: 20px;
+    opacity: 0.8; /* Adjusted opacity for better readability */
+    background: url(https://i.pinimg.com/564x/0b/20/00/0b2000a822d85d69531fde769104de19.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+h1{
+    font-size: 60px; /* Reduced font size for better scaling */
+    text-align: center;
+    margin-left: 20px; /* Reduced margin for better alignment */
+}
+
+p{
+    font-size: 20px; /* Reduced font size for better readability */
+    text-align: center;
+    margin-left: 20px; /* Reduced margin for better alignment */
+}
+
+h3{
+	margin-top: 10px;
+    position: absolute;
+    font-size: 40px; /* Increased font size for emphasis */
+    text-align: center;
+    top: 100px; /* Adjusted top position for better alignment */
+    left: 40%;
+	bottom: 30%;
+    font-family: cursive;
+    margin-bottom: 20px; /* Reduced margin for better spacing */
+}
+
+.menu .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 20rem);
+	padding: 3px;
+	gap: 1.5rem;
+    align-items: flex-start;
+    justify-content:center;
+}
+
+.menu .box-container .coffee{
+    text-align: center;
+    color: white;
+	top: 100px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.menu .box-container .coffee img{
+    width: 100%;
+    height: 350px; /* Add a fixed height for consistent image size */
+    margin-top: 20px;
+}
+
+.menu .box-container .coffee h2{
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+.menu .coffee button.order-button {
+    margin-top: 10px;
+	background-color: #be9c79;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.menu .coffee button.order-button:hover {
+    background-color: #b35700;
+}
+
+.menu .coffee p.price {
+    font-size: 1.2rem;
+    margin-top: 5px;
+    text-align: center; /* Center-align the text */
+    margin-left: auto; /* Add this line to center the price horizontally */
+    margin-right: auto; /* Add this line to center the price horizontally */
+}

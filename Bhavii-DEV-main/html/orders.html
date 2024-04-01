@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Bill</title>
+    <link rel="stylesheet" href="../css/orders.css">
+    <style>
+        .container {
+            position: relative;
+        }
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+        .buttons button {
+            flex: 1;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cafe Bill</h1>
+        <table id="itemTable">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Table Content Will Be Dynamic -->
+            </tbody>
+        </table>
+        <div class="total-box">
+            <p>Total:</p>
+            <p class="total">Rs 548</p>
+        </div>
+        <div class="contentbox"></div>
+        <div class="buttons">
+            <button onclick="goToFrontPage()">Go to Front Page</button>
+            <button onclick="goToCompleteOrder()">Complete Order</button>
+        </div>
+    </div>
+
+    <script>
+        var storedList = localStorage.getItem('orderListData');
+        var itemList = storedList ? JSON.parse(storedList) : [];
+
+        generateTable(itemList);
+
+        function generateTable(data) {
+            var tableBody = document.getElementById('itemTable').getElementsByTagName('tbody')[0];
+
+            // Clear existing table content
+            tableBody.innerHTML = '';
+
+            data.forEach(function(item) {
+                var row = tableBody.insertRow();
+
+                // Create cells for each property in JSON object
+                var itemCell = row.insertCell(0);
+                var quantityCell = row.insertCell(1);
+                var priceCell = row.insertCell(2);
+
+                itemCell.textContent = item.itemName;
+                quantityCell.innerHTML = `<span class="quantity">${item.quantity}</span>
+                              <button class="quantity-button" onclick="increaseQuantity(this, '${item.itemName}')">+</button>
+                              <button class="quantity-button" onclick="decreaseQuantity(this, '${item.itemName}')">-</button>`;
+                priceCell.textContent = item.itemPrice;
+            });
+            // Update the total price
+            updateTotalPrice();
+        }
+
+        function increaseQuantity(button, itemName) {
+            // Find the quantity element for the corresponding item
+            const quantityElement = button.parentElement.querySelector('.quantity');
+            // Get the current quantity as an integer
+            let currentQuantity = parseInt(quantityElement.textContent);
+            // Increase the quantity by 1
+            currentQuantity++;
+            // Update the quantity element with the new quantity
+            quantityElement.textContent = currentQuantity;
+            // Update the JSON object's quantity
+            updateItemQuantity(itemName, currentQuantity);
+            // Update the total price
+            updateTotalPrice();
+        }
+
+        function decreaseQuantity(button, itemName) {
+            // Find the quantity element for the corresponding item
+            const quantityElement = button.parentElement.querySelector('.quantity');
+            // Get the current quantity as an integer
+            let currentQuantity = parseInt(quantityElement.textContent);
+            // Decrease the quantity by 1, but not below 0
+            currentQuantity = Math.max(0, currentQuantity - 1);
+            // Update the quantity element with the new quantity
+            quantityElement.textContent = currentQuantity;
+            // Update the JSON object's quantity
+            updateItemQuantity(itemName, currentQuantity);
+            // Update the total price
+            updateTotalPrice();
+        }
+
+        function updateItemQuantity(itemName, quantity) {
+            // Find the item in the itemList and update its quantity
+            const itemToUpdateIndex = itemList.findIndex(item => item.itemName === itemName);
+
+            if (itemToUpdateIndex !== -1) {
+                // If the quantity is zero, remove the item from the list
+                if (quantity === 0) {
+                    itemList.splice(itemToUpdateIndex, 1);
+                    location.reload()
+                } else {
+                    // Update the quantity
+                    itemList[itemToUpdateIndex].quantity = quantity;
+                }
+
+                // Update the local storage
+                localStorage.setItem('orderListData', JSON.stringify(itemList));
+            }
+        }
+
+        function updateTotalPrice() {
+            // Find all quantity and price elements
+            const quantityElements = document.querySelectorAll('.quantity');
+            const priceElements = document.querySelectorAll('td:nth-child(3)');
+
+            let total = 0;
+
+            // Calculate the total price
+            for (let i = 0; i < quantityElements.length; i++) {
+                const quantity = parseInt(quantityElements[i].textContent);
+                const price = parseInt(priceElements[i].textContent.replace('Rs ', ''));
+                total += quantity * price;
+            }
+
+            // Update the total price element
+            document.querySelector('.total').textContent = 'Rs ' + total;
+        }
+
+        function goToFrontPage() {
+            window.location.href = 'front.html';
+        }
+
+            // Function to go to completeOrder.html and clear localStorage
+        function goToCompleteOrder() {
+            localStorage.removeItem('orderListData');
+            window.location.href = 'completeOrder.html';
+        }
+    </script>
+</body>
+</html>

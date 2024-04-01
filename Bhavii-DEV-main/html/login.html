@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Shop Login and Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Login</h1>
+    <form action="#" method="post">
+        <div class="group">
+            <label for="loginUsername"><i class="fas fa-user"></i> Username</label>
+            <input type="text" id="loginUsername" name="loginUsername" required>
+        </div>
+        <div class="group">
+            <label for="loginPassword"><i class="fas fa-lock"></i> Password</label>
+            <input type="password" id="loginPassword" name="loginPassword" required>
+        </div>
+        <div class="group">
+            <button type="submit">Login</button>
+        </div>
+        <div class="group">
+            <a href="register.html"><i class="fas fa-user-plus"></i> Register</a>
+        </div>
+    </form>
+</div>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        opacity: 0.8;
+        background: url(https://i.pinimg.com/564x/83/eb/f9/83ebf9e8187bd72dc310ed7f8bb5c7d1.jpg);
+        background-size: cover;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container {
+        background-color: #be9c79;
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        margin: 10px;
+    }
+
+    .container h1 {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .group {
+        margin-bottom: 15px;
+    }
+
+    .group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .group input {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .group button {
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .group button:hover {
+        background-color: #b35700;
+    }
+
+    /* Add some spacing between the icon and the label */
+    .group label i {
+        margin-right: 10px;
+    }
+
+    /* Style the links */
+    .group a {
+        text-decoration: none;
+        color: #333;
+    }
+
+    /* Add icon before links */
+    .group a i {
+        margin-right: 5px;
+    }
+    
+    .group a:hover {
+        border-bottom: 2px solid #b35700 ;
+    }
+</style>
+
+<script>
+    function validateForm() {
+        // Get the values of the username and password fields
+        var username = document.getElementById("loginUsername").value;
+        var password = document.getElementById("loginPassword").value;
+
+        // Perform simple validation
+        if (username.trim() === "" || password.trim() === "") {
+            alert("Please fill in both the username and password fields.");
+            return false; // Prevent form submission
+        }
+
+        
+
+        // If everything is valid, allow the form submission
+        return true;
+    }
+</script>
+
+</body>
+</html>
+</body>
+</html>
